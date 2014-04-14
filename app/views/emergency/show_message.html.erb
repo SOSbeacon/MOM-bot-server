@@ -1,0 +1,163 @@
+<%= stylesheet_link_tag "/assets/css/audio/jplayer.blue.monday", media: "all", "data-turbolinks-track" => true %>
+
+<div class="main-container emergency_show">
+  <div class="row margin-00">
+    <div class="col-sm-12 padding-00">
+      <div class="emergency_show_header text-center">
+        <div class="center">
+          <h1>
+            <i class="icon-leaf green"></i>
+            <span class="red">MOM-BOT</span>
+            <span class="white">System</span>
+          </h1>
+          <h4 class="blue">&copy; SOSBeacon</h4>
+        </div>
+
+        <div class="space-6"></div>
+        <!-- /position-relative -->
+      </div>
+      <div class="position-relative emergency_show_content">
+        <% if @message %>
+            <h3 class="header smaller lighter red">Message detail</h3>
+            <div class="created_by well">
+              <h4 class="green smaller lighter">Sent from:</h4>
+              <p><%= "#{@message.user.first_name} #{@message.user.last_name}" %></p>
+            </div>
+            <div class="created_date well">
+              <h4 class="green smaller lighter">Created at:</h4>
+              <p></p>
+            </div>
+            <div class="location well">
+              <h4 class="green smaller lighter">Location:</h4>
+              <% if @message.lat %>
+                  <div id="map-canvas">
+                  </div>
+              <% else %>
+                  <span>No location!</span>
+              <% end %>
+            </div>
+            <div class="photo well">
+              <h4 class="green smaller lighter">Photo:</h4>
+              <div class="">
+                <% if @message.photo_url.url %>
+                    <img src="<%= @message.photo_url.url %>" alt=""/>
+                <% else %>
+                    <span>No image!</span>
+                <% end %>
+              </div>
+            </div>
+            <div class="text well">
+              <h4 class="green smaller lighter">Text:</h4>
+              <div>
+                <% if @message.text %>
+                    <p><%= @message.text %></p>
+                <% else %>
+                    <span>No text!</span>
+                <% end %>
+              </div>
+            </div>
+            <div class="audio well">
+              <h4 class="green smaller lighter">Audio:</h4>
+              <div id="jquery_jplayer" class="jp-jplayer"></div>
+              <div id="jp_container_1" class="jp-audio">
+                <div class="jp-type-single">
+                  <div class="jp-gui jp-interface">
+                    <ul class="jp-controls">
+                      <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+                      <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+                      <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+                      <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+                      <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+                      <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+                    </ul>
+                    <div class="jp-progress">
+                      <div class="jp-seek-bar">
+                        <div class="jp-play-bar"></div>
+                      </div>
+                    </div>
+                    <div class="jp-volume-bar">
+                      <div class="jp-volume-bar-value"></div>
+                    </div>
+                    <div class="jp-time-holder">
+                      <div class="jp-current-time"></div>
+                      <div class="jp-duration"></div>
+                      <ul class="jp-toggles">
+                        <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+                        <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="jp-details">
+                    <ul>
+                      <li><span class="jp-title"></span></li>
+                    </ul>
+                  </div>
+                  <div class="jp-no-solution">
+                    <span>Update Required</span>
+                    To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                  </div>
+                </div>
+              </div>
+            </div>
+        <% else %>
+            <h1 class="text-center"><%= @notice %></h1>
+        <% end %>
+
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.main-container -->
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDdSRIkR5Objswl8yMhJz2YLlQB0TYTlw&sensor=false">
+</script>
+<script type="text/javascript"
+        src="/assets/js/audio/jquery.jplayer.min.js">
+</script>
+
+<script type="text/javascript">
+    <% if @message %>
+        function initialize() {
+            var lng = <%= @message.lng %>;
+            var lat = <%= @message.lat %>;
+            if (lat && lng ) {
+                var myLatlng = new google.maps.LatLng(lat, lng);
+
+                var mapOptions = {
+                    center: myLatlng,
+                    zoom: 12
+                };
+                var map = new google.maps.Map(document.getElementById("map-canvas"),
+                        mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: ''
+                });
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        $(document).ready(function() {
+            <% if @message.audio_url.url %>
+                $("#jquery_jplayer").show().jPlayer({
+                    ready: function () {
+                        $(this).jPlayer("setMedia", {
+                            m4a: "<%= @message.audio_url.url %>"
+                        });
+                    },
+                    swfPath: "/assets/js/audio",
+                    supplied: "m4a, oga"
+                });
+                $('#jp_container_1').show();
+            <% else %>
+                $("#jquery_jplayer").css("backgroundColor","#f5f5f5").show().html("No audio");
+            <% end %>
+            $(".created_date").find('p').text(moment(new Date("<%= @message.created_at %>")).format('MMMM Do YYYY, h:mm:ss a'));
+        });
+    <% end %>
+</script>

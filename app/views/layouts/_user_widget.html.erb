@@ -1,0 +1,7 @@
+<% if user_child_signed_in? %>
+    <p>Welcome <%= current_user_child.email %></p>
+    <%= link_to 'Logged In [click to logout]', destroy_user_child_session_path, :method => :delete %>
+<% else %>
+    <p>You are not signed in.</p>
+    <%= link_to 'Login', new_user_child_session_path %>
+<% end %>

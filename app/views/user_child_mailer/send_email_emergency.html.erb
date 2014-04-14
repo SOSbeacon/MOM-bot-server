@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<!--<div>-->
+<!--image_tag attachments['image.jpg'].url-->
+<!--aaaa-->
+<!--</div>-->
+
+<h2>Welcome to ms robot, <%= "#{@email}" %></h2>
+<p>
+  You have a emergency alert from <%= "#{@user_child.last_name}" "#{@user_child.first_name}" %>
+  <br/>
+  Link: <a href="http://ms-robot.herokuapp.com/emergency/<%= @message_id %>"></a>
+</p>
+
+<br>
+<p>If you have any questions about your order please feel free to contact us.</p>
+
+</body>
+</html>

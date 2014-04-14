@@ -1,0 +1,57 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4 class="blue bigger">New contact</h4>
+        </div>
+
+        <div class="modal-body overflow-visible">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="contact-alert"></div>
+                    <div class="form-horizontal">
+                        <div class="form-group name">
+                            <label for="name" class="col-sm-3 control-label no-padding-right">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="name" placeholder="Name" class="col-sm-5 col-xs-10"
+                                        value="<%= name %>" autofocus="true"/>
+                                <span class="help-inline"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group email">
+                            <label for="email" class="col-sm-3 control-label no-padding-right">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" id="email" placeholder="Email" class="col-sm-5 col-xs-10"
+                                        value="<%= email %>"/>
+                                <span class="help-inline"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group phone">
+                            <label for="phone" class="col-sm-3 control-label no-padding-right">Phone</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="phone" placeholder="Phone" class="col-xs-10 col-sm-5 input-mask-phone"
+                                        value="<%= phone %>"/>
+                                <span class="help-inline"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-sm" data-dismiss="modal">
+                <i class="icon-remove"></i>
+                Cancel
+            </button>
+
+            <button class="btn btn-sm btn-primary" id="submit">
+                <i class="icon-ok"></i>
+                Save
+            </button>
+        </div>
+    </div>
+</div>

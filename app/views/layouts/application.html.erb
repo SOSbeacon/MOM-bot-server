@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="User login page" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOM-BOT</title>
+
+  <%= javascript_include_tag    "/assets/js/jquery-1.10.2.min", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag  "/assets/js/date-time/moment.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
+
+  <!-- basic styles -->
+  <%= stylesheet_link_tag    "/assets/css/bootstrap", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/bootstrap-theme.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/font-awesome.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/chosen", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/select2", media: "all", "data-turbolinks-track" => true %>
+
+  <!--[if IE 7]>
+    <%= stylesheet_link_tag    "/assets/css/font-awesome-ie7.min", media: "all", "data-turbolinks-track" => true %>
+  <![endif]-->
+
+  <!-- page specific plugin styles -->
+  <%= stylesheet_link_tag    "/assets/css/fullcalendar", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/fullcalendar", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/datepicker", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/daterangepicker", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/bootstrap-timepicker.css", media: "all", "data-turbolinks-track" => true %>
+
+  <!-- fonts -->
+
+  <%= stylesheet_link_tag    "/assets/css/ace-fonts", media: "all", "data-turbolinks-track" => true %>
+
+  <!-- ace styles -->
+
+  <%= stylesheet_link_tag    "/assets/css/ace.min", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "/assets/css/ace-rtl.min", media: "all", "data-turbolinks-track" => true %>
+
+  <!--[if lte IE 8]>
+    <%= stylesheet_link_tag    "/assets/css/ace-ie.min", media: "all", "data-turbolinks-track" => true %>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "/assets/js/html5shiv", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "/assets/js/respond.min", "data-turbolinks-track" => true %>
+  <![endif]-->
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- page specific plugin scripts -->
+
+<!--[if lte IE 8]>
+  <%= javascript_include_tag  "/assets/js/excanvas.min", media: "all", "data-turbolinks-track" => true %>
+<![endif]-->
+
+<script type="text/javascript">
+    $(function() {
+        window.router = new MsRobot.Routers.DashboardRouter({user : <%= @user.to_json.html_safe %>});
+        if (!Backbone.History.started) {
+            Backbone.history.start();
+        }
+    });
+</script>
+
+<div id="dashboard">
+  <div id="menu-bar"></div>
+  <div id="main-container" class="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="main-container-inner">
+      <a class="menu-toggler" id="menu-toggler" href="#">
+        <span class="menu-text"></span>
+      </a>
+
+      <div class="sidebar" id="sidebar">
+        <script type="text/javascript">
+            try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+        </script>
+
+        <div id="nav-custom">
+        </div>
+
+      </div>
+
+      <div class="main-content">
+        <div class="page-content">
+          <div class="page-header"></div>
+          <div class="row">
+            <div class="col-xs-12">
+
+              <% if (alert) %>
+                  <div class="alert alert-block alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="icon-remove"></i>
+                    </button>
+
+                    <i class="icon-ok green"></i>
+
+                    <%= alert %>
+                  </div>
+              <% end %>
+
+              <% if (notice) %>
+                  <div class="alert alert-block alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                      <i class="icon-remove"></i>
+                    </button>
+
+                    <i class="icon-ok green"></i>
+
+                    <%= notice %>
+                  </div>
+              <% end %>
+
+              <div id="content" class="row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

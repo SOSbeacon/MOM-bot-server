@@ -1,0 +1,226 @@
+<div class="bootbox modal fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close close-modal" data-dismiss="modal">×</button>
+                <h4 class="modal-title">New Event:</h4></div>
+            <div class="modal-body">
+                <div class="bootbox-body">
+                    <div class="event-alert"></div>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="event-title" class="control-label col-sm-3 no-padding-right">Title: </label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="icon-edit bigger-110"></i>
+                                    </span>
+                                    <input type="text" id="event-title" class="col-xs-10 col-sm-8" placeholder="Title"
+                                            value="<%= title %>"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+
+                        <div class="form-group">
+                            <label for="event-content" class="control-label col-sm-3 no-padding-right">Content: </label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="icon-edit bigger-110"></i>
+                                    </span>
+                                    <input type="text" id="event-content" class="col-xs-10 col-sm-8" placeholder="Content"
+                                            value="<%= content %>"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 no-padding-right">Start Time: </label>
+                            <div class="col-sm-9">
+                                <div class="col-sm-8 no-padding-left no-padding-right">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="icon-calendar bigger-110"></i>
+                                        </span>
+                                        <input class="form-control date-picker" id="event-start-time" type="text"
+                                               data-date-format="mm-dd-yyyy"
+                                               placeholder="<%= moment(start).format('MM-DD-YYYY') %>"
+                                               value="<%= moment(start).format('MM-DD-YYYY') %>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="input-group bootstrap-timepicker">
+                                        <input id="event-start-hour" type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                            <i class="icon-time bigger-110"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3 no-padding-right">End Time: </label>
+                            <div class="col-sm-9">
+                                <div class="col-sm-8 no-padding-left no-padding-right">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="icon-calendar bigger-110"></i>
+                                        </span>
+                                        <input class="form-control" id="event-end-time" type="text"
+                                               placeholder="<%= moment(end).format('MM-DD-YYYY') %>"
+                                               value="<%= moment(end).format('MM-DD-YYYY') %>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="input-group bootstrap-timepicker">
+                                        <input id="event-end-hour" type="text" class="form-control" />
+                                        <span class="input-group-addon">
+                                            <i class="icon-time bigger-110"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-3 no-padding-right"></div>
+                            <div class="col-sm-9">
+                                <label>
+                                    <input type="checkbox" class="ace" id="event-checkbox-repeat"/>
+                                    <span class="lbl">Repeat</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="event-loop none">
+                            <h4 class="header blue bolder smaller">Repeat</h4>
+                            <div class="form-group">
+                                <label for="event-loop-type" class="control-label col-sm-3 no-padding-right">Repeats: </label>
+                                <div class="col-sm-9">
+
+                                    <select class="form-control col-xs-10 col-sm-10" id="event-loop-type"
+                                            data-placeholder="Choose a event loop type...">
+                                        <option value="daily" date-type="days">Daily</option>
+                                        <option value="weekly" date-type="weeks">Weekly</option>
+                                        <option value="monthly" date-type="months">Monthly</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group none" id="repeat-on">
+                                <label class="control-label col-sm-3 no-padding-right">Repeat on: </label>
+                                <div class="col-sm-9">
+                                    <label>
+                                        <input type="checkbox" class="ace weekly-repeat" id="d1" data-value="1">
+                                        <span class="lbl">M</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" class="ace weekly-repeat" id="d2" data-value="2">
+                                        <span class="lbl">T</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" class="ace weekly-repeat" id="d3" data-value="3">
+                                        <span class="lbl">W</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" class="ace weekly-repeat" id="d4" data-value="4">
+                                        <span class="lbl">T</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" class="ace weekly-repeat" id="d5" data-value="5">
+                                        <span class="lbl">F</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" class="ace weekly-repeat" id="d6" data-value="6">
+                                        <span class="lbl">S</span>
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" class="ace weekly-repeat" id="d7" data-value="0">
+                                        <span class="lbl">S</span>
+                                    </label>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="event-every" class="control-label col-sm-3 no-padding-right">Repeat every: </label>
+                                <div class="col-sm-9">
+                                    <select class="col-xs-2 col-sm-2" id="event-every"
+                                            data-placeholder="Choose a event loop type...">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                    </select>
+                                    <label class="event-type-every">days</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="event-end-date" class="control-label col-sm-3 no-padding-right">
+                                    End Date:
+                                </label>
+                                <div class="col-sm-6 no-padding-right">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="icon-calendar bigger-110"></i>
+                                    </span>
+                                        <input class="form-control date-picker" id="event-end-date" type="text"
+                                               data-date-format="mm-dd-yyyy"
+                                               value="<%= moment(end_date).format('MM-DD-YYYY') %>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <img src="/assets/images/loading.gif" alt="" class="loading event-loading none"/>
+                <button data-bb-handler="cancel" type="button" class="btn btn-default close-modal" data-dismiss="modal" id="cancel">
+                    Cancel
+                </button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary" id="confirm">Save</button>
+                <button data-bb-handler="delete" class='btn btn-danger pull-left' id="remove" style="display: none"><i class='icon-trash'></i> Delete Event</button>
+            </div>
+        </div>
+    </div>
+</div>

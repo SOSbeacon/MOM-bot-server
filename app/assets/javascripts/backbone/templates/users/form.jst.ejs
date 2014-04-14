@@ -1,0 +1,67 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4 class="blue bigger">Parent</h4>
+        </div>
+
+        <div class="modal-body overflow-visible">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="parent-alert"></div>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="first_name" class="col-sm-3 control-label no-padding-right">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="email" id="first_name" placeholder="First Name" class="col-sm-5 col-xs-10"
+                                        autofocus="true" value="<%= first_name %>"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last_name" class="col-sm-3 control-label no-padding-right">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="email" id="last_name" placeholder="Last Name" class="col-sm-5 col-xs-10"
+                                        value="<%= last_name %>"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-sm-3 control-label no-padding-right">Email</label>
+                            <div class="col-sm-9">
+                                <input type="email" id="email" placeholder="Email" class="col-sm-5 col-xs-10"
+                                        value="<%= email %>"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-sm-3 control-label no-padding-right">Password</label>
+                            <div class="col-sm-9">
+                                <% if (id) { %>
+                                    <input type="email" id="password" placeholder="Password" class="col-xs-10 col-sm-5"
+                                            disabled/>
+                                    <span class="change_password blue">Change</span>
+                                <% } else { %>
+                                    <input type="email" id="password" placeholder="Password" class="col-xs-10 col-sm-5"/>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-sm" data-dismiss="modal">
+                <i class="icon-remove"></i>
+                Cancel
+            </button>
+
+            <button class="btn btn-sm btn-primary" id="submit">
+                <i class="icon-ok"></i>
+                Create
+            </button>
+        </div>
+    </div>
+</div>

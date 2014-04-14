@@ -1,0 +1,21 @@
+<div class="col-xs-12">
+    <div class="group-if">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#/group_contacts">Parent: <%= user.email %></a>
+            </li>
+            <li class="active">Group: <%= name %></li>
+        </ul>
+
+        <a href="#modal-form" id="create-contact" class="btn btn-info pull-right btn-sm" role="button" class="blue" data-toggle="modal">
+            Create new contact </a>
+    </div>
+
+    <div class="top-alert"></div>
+
+    <div class="table-header">
+        List contacts
+    </div>
+    <div class="table-responsive" id="showcontent">
+    </div>
+</div>
