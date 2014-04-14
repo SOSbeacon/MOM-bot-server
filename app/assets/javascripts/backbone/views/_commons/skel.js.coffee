@@ -42,6 +42,7 @@ class MsRobot.Views.Skel.ListView extends Backbone.View
       @$("table.table").prepend(new @headerView().render().el)
 
     @collection.fetch({
+      cache: false,
       async: false,
       success: =>
         @$(".loading").hide()
