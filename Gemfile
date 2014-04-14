@@ -49,7 +49,7 @@ gem 'spring',        group: :development
 
 # ruby version
 #ruby "2.1.0"
-gem 'rails_12factor', group: :production
+#gem 'rails_12factor', group: :production
 gem 'rspec-rails', :group => [:development, :test]
 gem 'database_cleaner', :group => :test
 gem 'email_spec', :group => :test
@@ -65,7 +65,7 @@ gem "debugger"
 gem 'resque'
 gem 'twilio-ruby'
 gem 'sms-spec'
-gem 'resque_spec'
+gem 'resque_spec', group: :test
 gem 'carrierwave'
 gem "rmagick", "~> 2.13.1"
 gem 'unicorn'
