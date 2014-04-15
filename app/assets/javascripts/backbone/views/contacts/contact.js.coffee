@@ -58,6 +58,7 @@ class MsRobot.Views.Contacts.ContactForm extends Backbone.View
       "/group_contacts.json?auth_token=#{@session.get('authentication_token')}"
 
     groupContact.fetch({
+      cache: false,
       async: false,
       success: (response) =>
         response.each((model, index) =>
@@ -161,7 +162,7 @@ class MsRobot.Views.Contacts.ContactViewApp extends MsRobot.Views.Skel.Collectio
     @group.url = =>
       "/group_contacts/#{@id}.json?auth_token=#{session.get('authentication_token')}"
 
-    @group.fetch({async: false})
+    @group.fetch({cache: false,async: false})
 
     $(@el).html(@template(@group.toJSON()))
     return this

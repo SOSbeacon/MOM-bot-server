@@ -30,6 +30,7 @@ class MsRobot.Views.Events.EventViewApp extends Backbone.View
       "/event/list_event_on_range_date.json?query_start=#{startTime}&query_end=#{endTime}&auth_token=#{@session.get('authentication_token')}&user_id=#{$.cookie('user_id')}"
 
     @collection.fetch({
+      cache: false,
       async: false,
       success: (response) =>
         console.log response
@@ -43,6 +44,7 @@ class MsRobot.Views.Events.EventViewApp extends Backbone.View
       "/users/list_parent.json?auth_token=#{@session.get('authentication_token')}"
 
     listParent.fetch({
+      cache: false,
       async: false
     })
 

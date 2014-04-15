@@ -71,6 +71,7 @@ class MsRobot.Views.GroupContacts.GroupContactForm extends Backbone.View
       "/contacts.json?auth_token=#{@session.get('authentication_token')}&except=1"
 
     contact.fetch({
+      cache: false,
       async: false,
       success: (response) =>
         response.each((model, index) =>
@@ -156,6 +157,7 @@ class MsRobot.Views.GroupContacts.GroupContactViewApp extends MsRobot.Views.Skel
       "/users/list_parent.json?auth_token=#{@session.get('authentication_token')}"
 
     listParent.fetch({
+      cache: false,
       async: false,
     })
 
