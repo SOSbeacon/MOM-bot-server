@@ -112,7 +112,8 @@ class MsRobot.Views.Events.EventViewApp extends Backbone.View
       selectable: true
       selectHelper: true
       select: (start, end, allDay) ->
-        model = new MsRobot.Models.Event({start: moment(start).format("MM-DD-YYYY"), end: moment(end).format("MM-DD-YYYY")})
+        model = new MsRobot.Models.Event({start: moment(start).format("MM-DD-YYYY"), end: moment(end).format("MM-DD-YYYY"), days_of_week: new Array()})
+        console.log model
         view = new MsRobot.Views.Events.FormEvent({calendarEvent: that.calendarList, allDay: allDay, model:model})
         $("body").append(view.render().el)
         return
@@ -174,6 +175,7 @@ class MsRobot.Views.Events.FormEvent extends Backbone.View
     "change #event-start-hour" : "changeStartHour"
 
   render: =>
+    console.log @model
     $(@el).html @template(@model.toJSON())
 
     if @model.get("_id")
@@ -270,6 +272,8 @@ class MsRobot.Views.Events.FormEvent extends Backbone.View
       index = @daysOfWeek.indexOf(value)
       @daysOfWeek.splice(index,1)
 
+    console.log @daysOfWeek
+
   removeEvent: =>
     that = this
     postAjax 'DELETE', "", '/events/' + @model.get("_id") + ".json", (callback) =>
@@ -323,6 +327,7 @@ class MsRobot.Views.Events.FormEvent extends Backbone.View
     }
 
     that = this
+    console.log data
     if @model.get("_id")
       postAjax 'PUT', data, '/events/' + @model.get("_id") + ".json", (callback) =>
         console.log callback

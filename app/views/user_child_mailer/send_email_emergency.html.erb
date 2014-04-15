@@ -9,15 +9,13 @@
 <!--aaaa-->
 <!--</div>-->
 
-<h2>Welcome to ms robot, <%= "#{@email}" %></h2>
+<h2>Welcome to MOM-Bot</h2>
 <p>
-  You have a emergency alert from <%= "#{@user_child.last_name}" "#{@user_child.first_name}" %>
-  <br/>
-  Link: <a href="http://ms-robot.herokuapp.com/emergency/<%= @message_id %>"></a>
+  You received an MOM-Bot alert from <%= "#{@user_child.last_name}" "#{@user_child.first_name}" %>.
+  Detail here: <a href="http://162.242.174.218/emergency/<%= @message_id %>">
+  http://162.242.174.218/emergency/<%= @message_id %>
+  </a>
 </p>
-
-<br>
-<p>If you have any questions about your order please feel free to contact us.</p>
 
 </body>
 </html>

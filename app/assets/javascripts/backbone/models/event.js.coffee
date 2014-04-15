@@ -10,7 +10,7 @@ class MsRobot.Models.Event extends Backbone.Model
     end_date: moment().format("MM-DD-YYYY")
     allDay: false
     content: null
-    days_of_week: []
+    days_of_week: new Array()
 
   parse: (response) =>
     response.start = new Date(response.start)

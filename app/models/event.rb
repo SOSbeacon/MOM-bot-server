@@ -76,7 +76,7 @@ class Event < ActiveRecord::Base
         days.each do |d|
           event_custom = {
             _id: self.id.to_s,
-            start: d.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            start: d.change({:hour => self.start_time.to_datetime.strftime("%H").to_i, :min => self.start_time.to_datetime.strftime("%M").to_i}).strftime("%Y-%m-%dT%H:%M:%S%z"),
             end: d.change({:hour => self.end_time.to_datetime.strftime("%H").to_i, :min => self.end_time.to_datetime.strftime("%M").to_i}).strftime("%Y-%m-%dT%H:%M:%S%z"),
             title: self.title,
             type_event: self.type_event,
@@ -163,8 +163,9 @@ class Event < ActiveRecord::Base
       if d.strftime("%w").to_i == day.to_i
         days.push(d)
         d = d + number_interval.weeks
+      else
+        d = d + 1.days
       end
-      d = d + 1.days
     end
     return days
   end
