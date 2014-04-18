@@ -29,7 +29,7 @@
             </div>
             <div class="location well">
               <h4 class="blue smaller lighter">Location:</h4>
-              <% if @message.lat != nil %>
+              <% if !@message.lat.blank? || !@message.lng.blank? %>
                   <div id="map-canvas">
                   </div>
               <% else %>
