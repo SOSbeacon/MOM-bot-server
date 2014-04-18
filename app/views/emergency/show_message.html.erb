@@ -18,18 +18,18 @@
       </div>
       <div class="position-relative emergency_show_content">
         <% if @message %>
-            <h3 class="header smaller lighter red">Message detail</h3>
+            <h3 class="header smaller lighter blue">Message detail</h3>
             <div class="created_by well">
-              <h4 class="green smaller lighter">Sent from:</h4>
+              <h4 class="blue smaller lighter">Sent from:</h4>
               <p><%= "#{@message.user.first_name} #{@message.user.last_name}" %></p>
             </div>
             <div class="created_date well">
-              <h4 class="green smaller lighter">Created at:</h4>
+              <h4 class="blue smaller lighter">Created at:</h4>
               <p></p>
             </div>
             <div class="location well">
-              <h4 class="green smaller lighter">Location:</h4>
-              <% if @message.lat %>
+              <h4 class="blue smaller lighter">Location:</h4>
+              <% if @message.lat != nil %>
                   <div id="map-canvas">
                   </div>
               <% else %>
@@ -37,7 +37,7 @@
               <% end %>
             </div>
             <div class="photo well">
-              <h4 class="green smaller lighter">Photo:</h4>
+              <h4 class="blue smaller lighter">Photo:</h4>
               <div class="">
                 <% if @message.photo_url.url %>
                     <img src="<%= @message.photo_url.url %>" alt=""/>
@@ -47,7 +47,7 @@
               </div>
             </div>
             <div class="text well">
-              <h4 class="green smaller lighter">Text:</h4>
+              <h4 class="blue smaller lighter">Text:</h4>
               <div>
                 <% if @message.text %>
                     <p><%= @message.text %></p>
@@ -57,7 +57,7 @@
               </div>
             </div>
             <div class="audio well">
-              <h4 class="green smaller lighter">Audio:</h4>
+              <h4 class="blue smaller lighter">Audio:</h4>
               <div id="jquery_jplayer" class="jp-jplayer"></div>
               <div id="jp_container_1" class="jp-audio">
                 <div class="jp-type-single">
@@ -121,8 +121,9 @@
 <script type="text/javascript">
     <% if @message %>
         function initialize() {
-            var lng = <%= @message.lng %>;
-            var lat = <%= @message.lat %>;
+            var lng = "<%= @message.lng %>";
+            var lat = "<%= @message.lat %>";
+
             if (lat && lng ) {
                 var myLatlng = new google.maps.LatLng(lat, lng);
 
