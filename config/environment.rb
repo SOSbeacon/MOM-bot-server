@@ -12,3 +12,6 @@ USER_TYPE_NORMAL = 'normal'
 TWILIO_SID = '***'
 TWILIO_TOKEN = '***'
 TWILIO_NUMBER = '***'
+
+
+BASE_URL = "http://162.242.174.218/"

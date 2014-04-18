@@ -9,7 +9,7 @@ class SentSMS
     @twilio_client.account.sms.messages.create(
         :from => "#{TWILIO_NUMBER}",
         :to => "+#{contact_phone}",
-        :body => "#{user.last_name} #{user.first_name} called emergency 911. Link http://162.242.174.218/emergency/#{message_id}"
+        :body => "#{user.last_name} #{user.first_name} called emergency 911. Link #{BASE_URL}emergency/#{message_id}"
     )
   rescue Resque::TermException
     puts 'errors'

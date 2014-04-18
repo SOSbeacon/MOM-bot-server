@@ -36,12 +36,12 @@ Rails.application.configure do
   ActionMailer::Base.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
     :enable_starttls_auto => true,
-    :address            => '***',
+    :address            => 'smtp.sendgrid.net',
     :port               => 587,
-    :domain             => '***',
+    :domain             => '162.242.174.218',
     :authentication     => :plain,
-    :user_name          => '***',
-    :password           => '***', # for security reasons you can use a environment variable too. (ENV['INFO_MAIL_PASS'])
+    :user_name          => 'clifforloff@alum.mit.edu',
+    :password           => 'SOSbeacon2!', # for security reasons you can use a environment variable too. (ENV['INFO_MAIL_PASS'])
   }
 
 end

@@ -1,5 +1,5 @@
 class UserChildMailer < ActionMailer::Base
-  default from: "msrobot2014@gmail.com"
+  default from: "no-reply@mombot.com"
 
   def send_new_user_child_message(user_child)
     @user_child = user_child
